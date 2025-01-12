@@ -6,12 +6,14 @@ public class PatternSpawner : MonoBehaviour
 {
 
     [SerializeField] private GameObject[] patterns;
+    [SerializeField] private GameObject errorDetectionBall;
     
     public void SpawnPattern(int patternIndex)
     {
         GameObject patternPrefab = patterns[patternIndex];
         SpawnPositionSaver spawnPositionSaver = patternPrefab.GetComponent<SpawnPositionSaver>();
         Instantiate(patternPrefab, spawnPositionSaver.spawnPosition, Quaternion.identity);
+        Instantiate(errorDetectionBall, spawnPositionSaver.errorDetectionBallStartPosition, Quaternion.identity);
     }
     
     // Start is called before the first frame update
