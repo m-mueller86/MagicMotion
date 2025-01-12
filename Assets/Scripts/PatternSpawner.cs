@@ -21,7 +21,7 @@ public class PatternSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnPattern(3);
+        SpawnPattern(0);
     }
 
     // Update is called once per frame
