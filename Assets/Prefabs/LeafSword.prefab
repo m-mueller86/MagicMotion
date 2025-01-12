@@ -693,6 +693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPosition: {x: -12, y: 3, z: 7}
   errorDetectionBallStartPosition: {x: -11.7, y: 2.6, z: 6.6}
+  endPointPosition: {x: -10.6, y: 3.4, z: 13.2}
 --- !u!1 &4942407958573333941
 GameObject:
   m_ObjectHideFlags: 0

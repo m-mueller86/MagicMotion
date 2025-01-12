@@ -1004,6 +1004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPosition: {x: -12, y: 3.5, z: 8.5}
   errorDetectionBallStartPosition: {x: -11.7, y: 2.2, z: 7.5}
+  endPointPosition: {x: -10.6, y: 4.5, z: 12.2}
 --- !u!1 &5649699144860287045
 GameObject:
   m_ObjectHideFlags: 0
