@@ -73,3 +73,11 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Ignore specific Unity project folders
+Assets/_TerrainAutoUpgrade/
+Assets/Fantasy Forest Environment/
+Assets/FantasyEnvironments/
+Assets/TerrainSampleAssets/
+Assets/Game/HDRPDefaultResources/
+
