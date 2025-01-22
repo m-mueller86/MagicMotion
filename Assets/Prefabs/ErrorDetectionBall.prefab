@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4193664819403057223}
   - component: {fileID: 3323493146126822101}
   - component: {fileID: 5284147518706129174}
+  - component: {fileID: 7903917785222743795}
   m_Layer: 0
   m_Name: ErrorDetectionBall
   m_TagString: ErrorDetectionBall
@@ -160,3 +161,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db03fb3339bc2c5af9be2c53df495f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7903917785222743795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344763061157774169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dfa622045f935ca5851a5af6f2abbb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serialPortName: /dev/ttyACM0
+  baudRate: 9600
+  moveSpeed: 1
