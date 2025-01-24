@@ -16,7 +16,7 @@ public class PatternSpawner : MonoBehaviour
         _serialPort.DtrEnable = true;
         _serialPort.Open();
         
-        SpawnPattern(2);
+        SpawnPattern(0);
     }
     
     public void SpawnPattern(int patternIndex)

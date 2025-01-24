@@ -1,77 +1,70 @@
-#include <Wire.h>
-#include <Adafruit_Sensor.h>
-#include <Adafruit_BNO055.h>
+#include "Arduino_BMI270_BMM150.h"
+#include <MadgwickAHRS.h>
+#include <cmath>
 
-Adafruit_BNO055 bno = Adafruit_BNO055(55);
-
-float offsetZ = 0.0;
-float offsetY = 0.0;
-
-//unsigned long lastCalibrationTime = 0;
-//const unsigned long calibrationInterval = 5000; 
+// Madgwick-Filter initialisieren
+Madgwick filter;
+unsigned long lastUpdate = 0;
+float accX, accY, accZ;
+float gyroX, gyroY, gyroZ;
+float timeOffset = 0.0;
+unsigned long lastTimeOffsetUpdate = 0;
+const unsigned long timeOffsetInterval = 8000;
 
 void setup() {
     Serial.begin(9600);
+    while (!Serial);
 
-    if (!bno.begin()) {
-        Serial.println("BNO055 nicht gefunden. Überprüfe die Verkabelung!");
+    if (!IMU.begin()) {
+        Serial.println("Failed to initialize IMU!");
         while (1);
     }
 
-    bno.setExtCrystalUse(true);
+    Serial.println("IMU initialized successfully!");
 
-    PerformCalibration();
+    // Madgwick-Filter
+    filter.begin(50);
 }
 
 void loop() {
-    sensors_event_t orientationEvent;
-    bno.getEvent(&orientationEvent);
+    if (IMU.accelerationAvailable() && IMU.gyroscopeAvailable()) {
+        IMU.readAcceleration(accX, accY, accZ);
+        IMU.readGyroscope(gyroX, gyroY, gyroZ);
+
+        // Madgwick-Filter aktualisieren
+        filter.updateIMU(gyroX, gyroY, gyroZ, accX, accY, accZ);
+
+        float yaw = fmod(filter.getYaw() + timeOffset, 360);
 
 
-  //  if (millis() - lastCalibrationTime >= calibrationInterval) {
-  //      PerformCalibration();
-  //      lastCalibrationTime = millis();
-  //      Serial.println("Kalibrierung durchgeführt.");
-  //  }
-
-    float movementZAxis = orientationEvent.orientation.x - offsetZ;
-    float movementYAxis = orientationEvent.orientation.y - offsetY;
-
-    
-    bool isLeft = (movementZAxis > 320.0 && movementZAxis < 360.0);
-    bool isRight = (movementZAxis > 20.0 && movementZAxis < 50.0);
-    bool isUp = (movementYAxis > 10.0 && movementYAxis < 30.0);
-    bool isDown = (movementYAxis < -10.0 && movementYAxis > -30.0);
-
-    // Bewegungsrichtung ausgeben
-    if (isLeft && isUp) {
-        Serial.println("left-up");
-    } else if (isLeft && isDown) {
-        Serial.println("left-down");
-    } else if (isRight && isUp) {
-        Serial.println("right-up");
-    } else if (isRight && isDown) {
-        Serial.println("right-down");
-    } else if (isLeft) {
-        Serial.println("left");
-    } else if (isRight) {
-        Serial.println("right");
-    } else if (isUp) {
-        Serial.println("up");
-    } else if (isDown) {
-        Serial.println("down");
-    } else {
-        Serial.println("idle");
+        if (accX < -0.3 && yaw > 190.0) {
+          Serial.println("left-down");
+        } else if (accX > 0.3 && yaw > 190.0) {
+          Serial.println("left-up");
+        } else if (accX > 0.3 && yaw < 170.0) {
+          Serial.println("right-up");
+        } else if (accX < -0.3 && yaw < 170.0) {
+          Serial.println("right-down");
+        } else if (accX > 0.3) {
+          Serial.println("up");
+        } else if (accX < -0.3) {
+          Serial.println("down");
+        } else if (yaw > 190.0) {
+          Serial.println("left");
+        } else if (yaw < 170.0) {
+          Serial.println("right");
+        } else {
+          Serial.println("idle");
+        }
     }
 
-    delay(50); // Datenrate anpassen
+    unsigned long currentTime = millis();
+    if (currentTime - lastTimeOffsetUpdate >= timeOffsetInterval) {
+        timeOffset += 1.0;
+        lastTimeOffsetUpdate = currentTime;
+
+    }
+
+    delay(20);
 }
 
-void PerformCalibration() {
-    sensors_event_t orientationEvent;
-    bno.getEvent(&orientationEvent);
-
-    // Aktuelle Werte als Offset speichern
-    offsetZ = orientationEvent.orientation.x;
-    offsetY = orientationEvent.orientation.y;
-}
