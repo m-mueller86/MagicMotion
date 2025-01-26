@@ -4,5 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 2ed929b5696420f419036770bbc13200
+  - enabled: 1
+    path: Assets/Scenes/Duel.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/SpellSelection.unity
+    guid: f50d28061fadf3b4db06af1eb8b517d0
+  - enabled: 1
+    path: Assets/Scenes/Training.unity
+    guid: ea45019f7dfd6804d99ab29a6101bf65
+  - enabled: 1
+    path: Assets/Scenes/Spellbook.unity
+    guid: 699a663cae26be644a55039bb55a59e8
+  - enabled: 1
+    path: Assets/Scenes/SpellSelectionTraining.unity
+    guid: c395410f9d674a749b4e561c9f4c9977
   m_configObjects: {}
