@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b80b39df2bee8a428e808950995622b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duelManager: {fileID: 5075393725831038126, guid: 41a063bfbf18031ffb5b1801d4a71632, type: 3}
 --- !u!1 &4343612184286737064
 GameObject:
   m_ObjectHideFlags: 0
