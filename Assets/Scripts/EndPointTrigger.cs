@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EndPointTrigger : MonoBehaviour
 {
+    public DuelManager duelManager;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("ErrorDetectionBall"))
         {
-            Debug.Log("Pattern achieved");
+            duelManager.SetHasPatternArchivedOrTimeout(true);
         }
     }
 }

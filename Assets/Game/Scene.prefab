@@ -2753,8 +2753,7 @@ MonoBehaviour:
   - {fileID: 4104379720930282113, guid: e8cb59f569ac69c4ba6c59476b89d8ed, type: 3}
   - {fileID: 5605779492957262347, guid: 51d11b19bbce7d4208cacee591e32e5d, type: 3}
   - {fileID: 5496417070190801089, guid: dda113f00c19704728186fcf7c069cd1, type: 3}
-  errorDetectionBall: {fileID: 2344763061157774169, guid: c222cb1f3c43dca949392ebf021b4173, type: 3}
-  endPoint: {fileID: 924202193450148186, guid: 6e9917783f87ca2c28018b7c69ec3063, type: 3}
+  duelManager: {fileID: 5075393725831038126, guid: 41a063bfbf18031ffb5b1801d4a71632, type: 3}
 --- !u!1 &4959214337744498715
 GameObject:
   m_ObjectHideFlags: 0

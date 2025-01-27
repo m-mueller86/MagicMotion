@@ -68,7 +68,7 @@ public class ArduinoController : MonoBehaviour
 
     void OnDestroy()
     {
-        if (_serialPort.IsOpen)
+        if (_serialPort != null && _serialPort.IsOpen) 
             _serialPort.Close();
     }
 }
