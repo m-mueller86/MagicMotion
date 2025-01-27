@@ -49,3 +49,6 @@ MonoBehaviour:
   - {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
   - {fileID: 1206498299807332555, guid: af6c1e3f046eecd4d81330aeb285600f, type: 3}
   - {fileID: 4772634663576830964, guid: e1385af346f4e624eb313ec1ea4fcd7e, type: 3}
+  duelManager: {fileID: 5075393725831038126, guid: 41a063bfbf18031ffb5b1801d4a71632, type: 3}
+  spellSpeed: 5
+  spellSelectionMenu: {fileID: 0}
