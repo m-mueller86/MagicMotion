@@ -4,9 +4,9 @@ public class DuelManager : MonoBehaviour
 {
     public string playerSpell;
     public string enemySpell;
-    public float lastAccuracy;
-    public int playerHealth = 100;
-    public int enemyHealth = 100;
+    public float accuracy;
+    public int playerDamage = 10;
+    public int enemyDamage = 10;
     public bool hasPlayerChosenCounterSpell = false;
     public bool hasPatternArchivedOrTimeout = false;
     
@@ -23,30 +23,61 @@ public class DuelManager : MonoBehaviour
     public void SetPlayerSpell(string spell)
     {
         playerSpell = spell;
-        Debug.Log($"Player selected spell: {playerSpell}");
     }
 
     public void SetEnemySpell(string spell)
     {
         enemySpell = spell;
-        Debug.Log($"Enemy casts spell: {enemySpell}");
     }
 
-    public void UpdateAccuracy(float accuracy)
+    public void SetAccuracy(float accuracy)
     {
-        lastAccuracy = accuracy;
-        Debug.Log($"Last accuracy: {lastAccuracy}%");
+        this.accuracy = accuracy;
     }
 
-    public void AdjustPlayerHealth(int amount)
+    public void CalculateDamage()
     {
-        playerHealth = Mathf.Clamp(playerHealth + amount, 0, 100);
-        Debug.Log($"Player health: {playerHealth}");
-    }
+        if (enemySpell == "FireballAnimation" && playerSpell == "leaf")
+        {
+            playerDamage += 5;
+        }
+        
+        if (enemySpell == "LeafSwordAnimation" && playerSpell == "fire")
+        {
+            enemyDamage += 5;
+        }
+        
+        if (enemySpell == "LightningAnimation" && playerSpell == "fire")
+        {
+            playerDamage += 5;
+        }
+        
+        if (enemySpell == "FireballAnimation" && playerSpell == "lightning")
+        {
+            enemyDamage += 5;
+        }
+        
+        if (enemySpell == "LeafSwordAnimation" && playerSpell == "lightning")
+        {
+            playerDamage += 5;
+        }
+        
+        if (enemySpell == "LightningAnimation" && playerSpell == "leaf")
+        {
+            enemyDamage += 5;
+        }
+        
+        if (enemySpell == "ShieldAnimation")
+        {
+            playerDamage = 0;
+        }
+        
+        if (playerSpell == "ShieldAnimation")
+        {
+            enemyDamage = 0;
+        }
 
-    public void AdjustEnemyHealth(int amount)
-    {
-        enemyHealth = Mathf.Clamp(enemyHealth + amount, 0, 100);
-        Debug.Log($"Enemy health: {enemyHealth}");
+        enemyDamage *= (int)accuracy / 100;
     }
+    
 }

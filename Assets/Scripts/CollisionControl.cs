@@ -5,13 +5,12 @@ public class CollisionControl : MonoBehaviour
     private int collisionCount = 0;
     private float collisionTime = 0f; 
     private bool isColliding = false; 
+    public DuelManager duelManager;
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Border"))
         {
-            Debug.Log("Collision with border");
-            
             collisionCount++;
             isColliding = true;
         }
@@ -29,7 +28,6 @@ public class CollisionControl : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Border"))
         {
-            Debug.Log("Collision ended");
             isColliding = false;
         }
     }
@@ -38,7 +36,6 @@ public class CollisionControl : MonoBehaviour
     {
         float accuracy = 100f - (collisionCount * 2f + collisionTime * 10f); 
         accuracy = Mathf.Clamp(accuracy, 0f, 100f); 
-
-        Debug.Log($"Accuracy: {accuracy}%");
+        duelManager.SetAccuracy(accuracy);
     }
 }

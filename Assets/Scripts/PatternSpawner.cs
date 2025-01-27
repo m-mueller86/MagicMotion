@@ -6,6 +6,7 @@ public class PatternSpawner : MonoBehaviour
 
     [SerializeField] private GameObject[] patterns;
     public DuelManager duelManager;
+    private GameObject activePattern;
     
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class PatternSpawner : MonoBehaviour
     {
         GameObject patternPrefab = patterns[patternIndex];
         SpawnPositionSaver spawnPositionSaver = patternPrefab.GetComponent<SpawnPositionSaver>();
-        Instantiate(patternPrefab, spawnPositionSaver.spawnPosition, spawnPositionSaver.spawnRotation);
+        activePattern = Instantiate(patternPrefab, spawnPositionSaver.spawnPosition, spawnPositionSaver.spawnRotation);
     }
     
     // Update is called once per frame
@@ -38,5 +39,10 @@ public class PatternSpawner : MonoBehaviour
             duelManager.SetPlayerChosenCounterSpell(false);
         }
         
+        if (duelManager.hasPatternArchivedOrTimeout)
+        {
+            Destroy(activePattern);
+        }
+         
     }
 }

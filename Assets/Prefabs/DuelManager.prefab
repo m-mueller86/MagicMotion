@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955b36a325dd95cc6bb17740df48ed6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpell: lightning
-  enemySpell: LightningAnimation
-  lastAccuracy: 0
-  playerHealth: 100
-  enemyHealth: 100
+  playerSpell: fire
+  enemySpell: LeafSwordAnimation
+  accuracy: 100
+  playerDamage: 0
+  enemyDamage: 0
   hasPlayerChosenCounterSpell: 0
   hasPatternArchivedOrTimeout: 0

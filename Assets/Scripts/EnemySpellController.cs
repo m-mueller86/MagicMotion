@@ -7,6 +7,7 @@ public class EnemySpellController : MonoBehaviour
     public float spellSpeed = 1f;
     public GameObject spellSelectionMenu;
     private GameObject activeSpell = null;
+    private bool roundOver = false;
     
     public void SpawnSpell(int spellIndex)
     {
@@ -17,7 +18,6 @@ public class EnemySpellController : MonoBehaviour
         activeSpell = Instantiate(spellPrefab, spawnPosition, Quaternion.identity);
         SpellSelectionUI spellSelectionUI = spellSelectionMenu.GetComponent<SpellSelectionUI>();
         spellSelectionUI.OpenSpellSelection();
-        
     }
 
     void Start()
@@ -27,16 +27,27 @@ public class EnemySpellController : MonoBehaviour
 
     void Update()
     {
-        if (activeSpell != null && duelManager.enemySpell != "ShieldAnimation" && duelManager.hasPatternArchivedOrTimeout)
+        if (duelManager.hasPatternArchivedOrTimeout && activeSpell == null)
+        {
+            roundOver = true;
+        }
+        
+        if (activeSpell != null && duelManager.hasPatternArchivedOrTimeout && duelManager.enemySpell != "ShieldAnimation")
         {
             activeSpell.transform.position += Vector3.right * spellSpeed * Time.deltaTime;
-            
-            if (activeSpell.transform.position.x > 640f)
+            if (activeSpell.transform.position.x > 640)
             {
                 Destroy(activeSpell);
                 activeSpell = null;
-                duelManager.SetHasPatternArchivedOrTimeout(false);
             }
+        }
+
+        if (roundOver)
+        {
+            roundOver = false;
+            int randomIndex = Random.Range(0, spellPrefabs.Length);
+            SpawnSpell(randomIndex);
+            duelManager.SetHasPatternArchivedOrTimeout(false);
         }
     }
 }
