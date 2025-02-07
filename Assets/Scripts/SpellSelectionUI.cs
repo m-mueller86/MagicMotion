@@ -12,7 +12,7 @@ public class SpellSelectionUI : MonoBehaviour
 
     void Start()
     {
-        selectionPanel.SetActive(false);
+        selectionPanel.SetActive(true);
         ResetButtonColors();
     }
 

@@ -11,7 +11,6 @@ public class PatternSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
     
     public void SpawnPattern(int patternIndex)
@@ -26,13 +25,13 @@ public class PatternSpawner : MonoBehaviour
     {
         if (duelManager.hasPlayerChosenCounterSpell)
         {
-            if (duelManager.playerSpell == "fire")
+            if (duelManager.playerSpell == "FireballAnimationPlayer")
             {
                 SpawnPattern(2);
-            } else if(duelManager.playerSpell == "lightning")
+            } else if(duelManager.playerSpell == "LightningAnimationPlayer")
             {
                 SpawnPattern(3);
-            } else if(duelManager.playerSpell == "leaf")
+            } else if(duelManager.playerSpell == "LeafSwordAnimationPlayer")
             {
                 SpawnPattern(1);
             }

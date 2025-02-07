@@ -37,5 +37,7 @@ public class CollisionControl : MonoBehaviour
         float accuracy = 100f - (collisionCount * 2f + collisionTime * 10f); 
         accuracy = Mathf.Clamp(accuracy, 0f, 100f); 
         duelManager.SetAccuracy(accuracy);
+        Debug.Log(accuracy);
+        
     }
 }

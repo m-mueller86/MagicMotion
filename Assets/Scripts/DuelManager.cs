@@ -69,15 +69,14 @@ public class DuelManager : MonoBehaviour
         
         if (enemySpell == "ShieldAnimation")
         {
-            playerDamage = 0;
+            enemyDamage = 0;
         }
         
         if (playerSpell == "ShieldAnimation")
         {
-            enemyDamage = 0;
+            playerDamage = 0;
         }
-
-        enemyDamage *= (int)accuracy / 100;
+        enemyDamage = (int) (enemyDamage * (accuracy / 100));
+        Debug.Log("Damage: " +  enemyDamage);
     }
-    
 }

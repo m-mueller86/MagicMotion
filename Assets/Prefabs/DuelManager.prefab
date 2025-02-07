@@ -47,7 +47,7 @@ MonoBehaviour:
   playerSpell: fire
   enemySpell: LeafSwordAnimation
   accuracy: 100
-  playerDamage: 0
-  enemyDamage: 0
+  playerDamage: 10
+  enemyDamage: 10
   hasPlayerChosenCounterSpell: 0
   hasPatternArchivedOrTimeout: 0
