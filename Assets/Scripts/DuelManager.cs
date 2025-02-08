@@ -37,41 +37,34 @@ public class DuelManager : MonoBehaviour
 
     public void CalculateDamage()
     {
-        if (enemySpell == "FireballAnimation" && playerSpell == "leaf")
+        if (enemySpell == "FireballAnimation" && playerSpell == "LeafSwordAnimationPlayer")
         {
             playerDamage += 5;
         }
-        
-        if (enemySpell == "LeafSwordAnimation" && playerSpell == "fire")
+        if (enemySpell == "LeafSwordAnimation" && playerSpell == "FireballAnimationPlayer")
         {
             enemyDamage += 5;
         }
-        
-        if (enemySpell == "LightningAnimation" && playerSpell == "fire")
+        if (enemySpell == "LightningAnimation" && playerSpell == "FireballAnimationPlayer")
         {
             playerDamage += 5;
         }
-        
-        if (enemySpell == "FireballAnimation" && playerSpell == "lightning")
+        if (enemySpell == "FireballAnimation" && playerSpell == "LightningAnimationPlayer")
         {
             enemyDamage += 5;
         }
-        
-        if (enemySpell == "LeafSwordAnimation" && playerSpell == "lightning")
+        if (enemySpell == "LeafSwordAnimation" && playerSpell == "LightningAnimationPlayer")
         {
             playerDamage += 5;
         }
-        
-        if (enemySpell == "LightningAnimation" && playerSpell == "leaf")
+        if (enemySpell == "LightningAnimation" && playerSpell == "LeafSwordAnimationPlayer")
         {
             enemyDamage += 5;
         }
-        
         if (enemySpell == "ShieldAnimation")
         {
             enemyDamage = 0;
         }
-        
         if (playerSpell == "ShieldAnimation")
         {
             playerDamage = 0;

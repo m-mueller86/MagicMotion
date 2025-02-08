@@ -4,6 +4,7 @@ public class EnemySpellController : MonoBehaviour
 {
     public GameObject[] spellPrefabs;
     public GameObject[] playerSpells; 
+    public AudioClip[] spellSounds;
     public DuelManager duelManager; 
     public float spellSpeed = 1f;
     public GameObject spellSelectionMenu;
@@ -11,6 +12,7 @@ public class EnemySpellController : MonoBehaviour
     private GameObject playerActiveSpell = null;
     private bool roundOver = false;
     public Enemy enemy;
+    private AudioSource audioSource;
 
     public void SpawnSpell(int spellIndex)
     {
@@ -36,9 +38,18 @@ public class EnemySpellController : MonoBehaviour
             }
         }
     }
+    
+    private void PlaySpellSound(int spellIndex)
+    {
+        if (spellIndex < spellSounds.Length && audioSource != null)
+        {
+            audioSource.PlayOneShot(spellSounds[spellIndex]);
+        }
+    }
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         SpawnSpell(1);
     }
 
@@ -54,6 +65,21 @@ public class EnemySpellController : MonoBehaviour
             if (duelManager.enemySpell != "ShieldAnimation")
             {
                 activeSpell.transform.position += Vector3.right * spellSpeed * Time.deltaTime;
+                if (activeSpell.transform.position.x > 632 && activeSpell.transform.position.x < 633)
+                {
+                    if (duelManager.enemySpell == "FireballAnimation")
+                    {
+                        PlaySpellSound(0);
+                    }
+                    else if (duelManager.enemySpell == "LeafSwordAnimation")
+                    {
+                        PlaySpellSound(1);
+                    }
+                    else if (duelManager.enemySpell == "LightningAnimation")
+                    {
+                        PlaySpellSound(2);
+                    }
+                }
                 if (activeSpell.transform.position.x > 634)
                 {
                     SpawnPlayerSpell(duelManager.playerSpell);
@@ -71,6 +97,23 @@ public class EnemySpellController : MonoBehaviour
         if (playerActiveSpell != null)
         {
             playerActiveSpell.transform.position += Vector3.right * -spellSpeed * Time.deltaTime;
+            
+            if (playerActiveSpell.transform.position.x < 631 && playerActiveSpell.transform.position.x > 630)
+            {
+                if (duelManager.playerSpell == "FireballAnimationPlayer")
+                {
+                    PlaySpellSound(0);
+                }
+                else if (duelManager.playerSpell == "LeafSwordAnimationPlayer")
+                {
+                    PlaySpellSound(1);
+                }
+                else if (duelManager.playerSpell == "LightningAnimationPlayer")
+                {
+                    PlaySpellSound(2);
+                }
+            }
+            
             if (playerActiveSpell.transform.position.x < 629)
             {
                 Destroy(playerActiveSpell);

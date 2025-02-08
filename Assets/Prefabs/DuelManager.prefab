@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955b36a325dd95cc6bb17740df48ed6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpell: fire
+  playerSpell: FireballAnimationPlayer
   enemySpell: LeafSwordAnimation
   accuracy: 100
   playerDamage: 10
