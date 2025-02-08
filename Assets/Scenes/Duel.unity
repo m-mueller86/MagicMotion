@@ -241,6 +241,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1440423362}
     - target: {fileID: 7423604784153041258, guid: 73f3ad5a8dd3cda98b6c2005d2821de2, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1440423363}
+    - target: {fileID: 7423604784153041258, guid: 73f3ad5a8dd3cda98b6c2005d2821de2, type: 3}
       propertyPath: spellSelectionMenu
       value: 
       objectReference: {fileID: 1447758350}
@@ -414,6 +418,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c200894e57793d641aaf6fbd1e71e785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1440423363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1196404650282450528, guid: ae3c2d0b93aa19947b19a607b26f784e, type: 3}
+  m_PrefabInstance: {fileID: 1440423361}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40757361876423044874a9fa4c24d83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1447758350 stripped

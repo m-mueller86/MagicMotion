@@ -12,6 +12,7 @@ public class EnemySpellController : MonoBehaviour
     private GameObject playerActiveSpell = null;
     private bool roundOver = false;
     public Enemy enemy;
+    public Player player;
     private AudioSource audioSource;
 
     public void SpawnSpell(int spellIndex)
@@ -125,7 +126,9 @@ public class EnemySpellController : MonoBehaviour
         {
             duelManager.CalculateDamage();
             enemy.TakeDamage(duelManager.enemyDamage);
+            player.TakeDamage(duelManager.playerDamage);
             duelManager.enemyDamage = 10;
+            duelManager.playerDamage = 10;
             roundOver = false;
             int randomIndex = Random.Range(0, spellPrefabs.Length);
             SpawnSpell(randomIndex);

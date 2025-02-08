@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpell: FireballAnimationPlayer
   enemySpell: LeafSwordAnimation
-  accuracy: 100
+  trainingSpell: Feuerball
+  accuracy: 68.60001
   playerDamage: 10
   enemyDamage: 10
   hasPlayerChosenCounterSpell: 0

@@ -3,23 +3,34 @@ using UnityEngine;
 
 public class PatternSpawner : MonoBehaviour
 {
-
     [SerializeField] private GameObject[] patterns;
     public DuelManager duelManager;
     private GameObject activePattern;
-    
+
     // Start is called before the first frame update
     void Start()
     {
+        if (duelManager.trainingSpell == "Blitzspeer")
+        {
+            SpawnPattern(3);
+        }
+        else if (duelManager.trainingSpell == "Feuerball")
+        {
+            SpawnPattern(2);
+        }
+        else if (duelManager.trainingSpell == "Blätterschwert")
+        {
+            SpawnPattern(1);
+        }
     }
-    
+
     public void SpawnPattern(int patternIndex)
     {
         GameObject patternPrefab = patterns[patternIndex];
         SpawnPositionSaver spawnPositionSaver = patternPrefab.GetComponent<SpawnPositionSaver>();
         activePattern = Instantiate(patternPrefab, spawnPositionSaver.spawnPosition, spawnPositionSaver.spawnRotation);
     }
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -28,13 +39,16 @@ public class PatternSpawner : MonoBehaviour
             if (duelManager.playerSpell == "FireballAnimationPlayer")
             {
                 SpawnPattern(2);
-            } else if(duelManager.playerSpell == "LightningAnimationPlayer")
+            }
+            else if (duelManager.playerSpell == "LightningAnimationPlayer")
             {
                 SpawnPattern(3);
-            } else if(duelManager.playerSpell == "LeafSwordAnimationPlayer")
+            }
+            else if (duelManager.playerSpell == "LeafSwordAnimationPlayer")
             {
                 SpawnPattern(1);
             }
+
             duelManager.SetPlayerChosenCounterSpell(false);
         }
         
@@ -42,6 +56,5 @@ public class PatternSpawner : MonoBehaviour
         {
             Destroy(activePattern);
         }
-         
     }
 }

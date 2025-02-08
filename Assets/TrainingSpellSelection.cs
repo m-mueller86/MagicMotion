@@ -10,6 +10,7 @@ public class TrainingSpellSelection : MonoBehaviour
 {
     public Button[] spellButtons; // Referenz auf die Zauber-Buttons
     public List<string> selectedSpells = new List<string>(); // Liste der ausgewählten Zauber
+    public DuelManager duelManager;
 
     void Start()
     {
@@ -24,9 +25,9 @@ public class TrainingSpellSelection : MonoBehaviour
     {
         string spellName = button.GetComponentInChildren<TextMeshProUGUI>().text; // Name des Zaubers aus dem Button-Text
         selectedSpells.Add(spellName);
+        duelManager.trainingSpell = spellName;
+        duelManager.SetHasPatternArchivedOrTimeout(false);
         GameManager.Instance.selectedSpells = selectedSpells;
-
         SceneManager.LoadSceneAsync("Training");
-
     }
 }

@@ -4,6 +4,7 @@ public class DuelManager : MonoBehaviour
 {
     public string playerSpell;
     public string enemySpell;
+    public string trainingSpell;
     public float accuracy;
     public int playerDamage = 10;
     public int enemyDamage = 10;
@@ -70,6 +71,6 @@ public class DuelManager : MonoBehaviour
             playerDamage = 0;
         }
         enemyDamage = (int) (enemyDamage * (accuracy / 100));
-        Debug.Log("Damage: " +  enemyDamage);
+        playerDamage = (int) (playerDamage * 0.7f);
     }
 }

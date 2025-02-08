@@ -341,6 +341,7 @@ MonoBehaviour:
   - {fileID: 900892938}
   - {fileID: 642192294}
   selectedSpells: []
+  duelManager: {fileID: 5075393725831038126, guid: 41a063bfbf18031ffb5b1801d4a71632, type: 3}
 --- !u!1 &311522993
 GameObject:
   m_ObjectHideFlags: 0
